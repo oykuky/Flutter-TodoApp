@@ -6,7 +6,6 @@ void main() {
 
 class TodoItem {
   String text;
-
   TodoItem(this.text);
 }
 
@@ -56,6 +55,8 @@ class _TodoScreenState extends State<TodoScreen> {
                 hintText: 'New task',
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10.0),
+                  borderSide: BorderSide(color: Colors.purple, width: 2.0),
+
                 ),
               ),
             ),
@@ -79,7 +80,7 @@ class _TodoScreenState extends State<TodoScreen> {
                     backgroundColor: Colors.pink, // Buton rengi
                   ),
                 ),
-                SizedBox(width: 10),
+                SizedBox(width: 10,),
                 ElevatedButton(
                   onPressed: () {
                     setState(() {
@@ -91,19 +92,17 @@ class _TodoScreenState extends State<TodoScreen> {
                     children: [
                       Text(
                         'Remove All',
-                        style: TextStyle(color: Colors.white), // Text rengi beyaz
+                        style: TextStyle(color: Colors.white, fontSize: 17), // Text rengi beyaz
                       ),
                       SizedBox(width: 5),
-                      Icon(
-                        Icons.delete,
-                        color: Colors.white, // Icon rengi beyaz
-                      ),
+
                     ],
                   ),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.pink, // Buton rengi
                   ),
                 ),
+                SizedBox(height: 20), // Boşluk ekleyen SizedBox
               ],
             ),
             Expanded(
@@ -111,12 +110,12 @@ class _TodoScreenState extends State<TodoScreen> {
                 itemCount: todos.length,
                 itemBuilder: (context, index) {
                   return Container(
-                      height: 43.0, // Yükseklik
+                      height: 42.0,
                       decoration: BoxDecoration(
-                        color: Colors.grey[200], // Arka plan rengi: Açık gri ton
-                        borderRadius: BorderRadius.circular(10.0), // Border radius
+                        color: Colors.grey[200],
+                        borderRadius: BorderRadius.circular(18.0), // Border radius
                       ),
-                  margin: EdgeInsets.symmetric(vertical: 5.0),
+                  margin: EdgeInsets.symmetric(horizontal: 2.0,vertical: 6.0),
                   child: ListTile(
                     title: Container(
                       alignment: Alignment.centerLeft,
