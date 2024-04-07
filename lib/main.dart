@@ -32,6 +32,15 @@ class _TodoScreenState extends State<TodoScreen> {
   TextEditingController controller = TextEditingController();
 
   @override
+  void initState() {
+    super.initState();
+    // Uygulama açıldığında 500 elemanlı bir liste oluştur
+    for (int i = 0; i < 500; i++) {
+      todos.add(TodoItem('Todo $i'));
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -56,7 +65,6 @@ class _TodoScreenState extends State<TodoScreen> {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10.0),
                   borderSide: BorderSide(color: Colors.purple, width: 2.0),
-
                 ),
               ),
             ),
@@ -73,11 +81,12 @@ class _TodoScreenState extends State<TodoScreen> {
                       });
                     }
                   },
-                  child: Icon(Icons.add,
+                  child: Icon(
+                    Icons.add,
                     color: Colors.white,
                   ),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.pink, // Buton rengi
+                    backgroundColor: Colors.pink,
                   ),
                 ),
                 SizedBox(width: 10,),
@@ -88,21 +97,20 @@ class _TodoScreenState extends State<TodoScreen> {
                     });
                   },
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center, // İçeriği ortala
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
                         'Remove All',
-                        style: TextStyle(color: Colors.white, fontSize: 17), // Text rengi beyaz
+                        style: TextStyle(color: Colors.white, fontSize: 17),
                       ),
                       SizedBox(width: 5),
-
                     ],
                   ),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.pink, // Buton rengi
+                    backgroundColor: Colors.pink,
                   ),
                 ),
-                SizedBox(height: 20), // Boşluk ekleyen SizedBox
+                SizedBox(height: 20),
               ],
             ),
             Expanded(
@@ -110,30 +118,34 @@ class _TodoScreenState extends State<TodoScreen> {
                 itemCount: todos.length,
                 itemBuilder: (context, index) {
                   return Container(
-                      height: 42.0,
-                      decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        borderRadius: BorderRadius.circular(18.0), // Border radius
+                    height: 43.0,
+                    decoration: BoxDecoration(
+                      color: Colors.grey[200],
+                      borderRadius: BorderRadius.circular(18.0),
+                    ),
+                    margin: EdgeInsets.symmetric(horizontal: 6.0, vertical: 6.0),
+                    child: ListTile(
+                      contentPadding: EdgeInsets.symmetric(horizontal: 20.0),
+                      title: Container(
+                        padding: EdgeInsets.symmetric(vertical: 4.0),
+                        child: Text(
+                          todos[index].text,
+                        ),
                       ),
-                  margin: EdgeInsets.symmetric(horizontal: 2.0,vertical: 6.0),
-                  child: ListTile(
-                    title: Container(
-                      alignment: Alignment.centerLeft,
-                      child: Text(todos[index].text),
+                      trailing: IconButton(
+                        icon: Icon(Icons.delete),
+                        padding: EdgeInsets.symmetric(vertical: 3.0),
+                        onPressed: () {
+                          setState(() {
+                            todos.removeAt(index);
+                          });
+                        },
+                      ),
                     ),
-                    trailing: IconButton(
-                      icon: Icon(Icons.delete),
-                      onPressed: () {
-                        setState(() {
-                          todos.removeAt(index);
-                        });
-                      },
-                    ),
-                  ),);
-
+                  );
                 },
               ),
-            ),
+            )
           ],
         ),
       ),
