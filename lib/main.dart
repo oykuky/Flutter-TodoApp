@@ -55,7 +55,7 @@ class _TodoScreenState extends State<TodoScreen> {
         backgroundColor: Color(0xFFFFD3E0),
       ),
       body: Padding(
-        padding: EdgeInsets.all(20.0),
+        padding: EdgeInsets.all(17.0),
         child: Column(
           children: <Widget>[
             TextField(
@@ -110,7 +110,7 @@ class _TodoScreenState extends State<TodoScreen> {
                     backgroundColor: Colors.pink,
                   ),
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: 10),
               ],
             ),
             Expanded(
@@ -118,23 +118,23 @@ class _TodoScreenState extends State<TodoScreen> {
                 itemCount: todos.length,
                 itemBuilder: (context, index) {
                   return Container(
-                    height: 43.0,
+                    height: 38.0,
                     decoration: BoxDecoration(
                       color: Colors.grey[200],
                       borderRadius: BorderRadius.circular(18.0),
                     ),
-                    margin: EdgeInsets.symmetric(horizontal: 6.0, vertical: 6.0),
+                    margin: EdgeInsets.symmetric(horizontal: 3.0, vertical: 3.0),
                     child: ListTile(
-                      contentPadding: EdgeInsets.symmetric(horizontal: 20.0),
+                      contentPadding: EdgeInsets.symmetric(horizontal: 20.0,vertical:0.0),
                       title: Container(
-                        padding: EdgeInsets.symmetric(vertical: 4.0),
+                        padding: EdgeInsets.symmetric(vertical: 1.0),
                         child: Text(
                           todos[index].text,
                         ),
                       ),
                       trailing: IconButton(
                         icon: Icon(Icons.delete),
-                        padding: EdgeInsets.symmetric(vertical: 3.0),
+                        padding: EdgeInsets.symmetric(vertical: 0.0),
                         onPressed: () {
                           setState(() {
                             todos.removeAt(index);
