@@ -34,8 +34,7 @@ class _TodoScreenState extends State<TodoScreen> {
   @override
   void initState() {
     super.initState();
-    // Uygulama açıldığında 500 elemanlı bir liste oluştur
-    for (int i = 0; i < 500; i++) {
+    for (int i = 0; i < 250; i++) {
       todos.add(TodoItem('Todo $i'));
     }
   }
